@@ -1,0 +1,7 @@
+hostname {{ name }}
+{% for interface in interfaces %}interface {{ interface.name }}
+ description {{ interface.description }}
+ ip address {{ interface.address }} {{ interface.mask }}
+{% endfor %}router ospf {{ ospf_id }}
+{% for network in networks %} network {{ network.address }} {{ network.wildcard }} area {{ network.area }}
+{% endfor %}
